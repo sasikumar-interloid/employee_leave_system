@@ -1,12 +1,32 @@
-<h2>Forgot your password?</h2>
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
-    <p><%= f.label :email %></p>
-    <p><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
+<section class="h-screen flex items-center justify-center">
+  <div class="w-fit rounded-sm bg-white shadow-[0_5px_20px_rgba(15,23,42,0.09)] border border-slate-50">
+    <div class="p-4 sm:px-10 lg:p-10">
+      <h1 class="text-center text-md sm:text-lg font-semibold tracking-tight">Reset your password</h1>
+      <p class="mt-4 text-xs sm:text-sm leading-6 sm:leading-7">Enter your email address and we will send you instructions to reset your password.</p>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), 
+       data: { controller: "form-validation", action: "submit->form-validation#validateForm" }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="pt-5">
+          <%= f.label :email, "Email address", class: "text-xs sm:text-sm font-medium" %>
+          <%= f.email_field :email,autofocus: true,autocomplete: "email", placeholder: "Enter your email", required: true,
+           data:{
+                  form_validation_target: "input",
+                  validation_type: "email",
+                  validation_required: "true",
+                  validation_label: "Email",
+                  validation_error_id: "email-error",
+                  action: "blur->form-validation#validateField input->form-validation#clearError"
+                }, 
+          class: "mt-2 w-full h-[35px] rounded-sm border border-slate-300 px-4 text-xs outline-none transition focus:border-primary" %>
+          <span id="email-error" class="hidden text-red-500 text-xs mt-1 block"></span>
+        </div>
+        <%= f.submit "Send reset instructions",
+        class: "mt-4 inline-flex w-full h-[35px] items-center justify-center rounded-sm bg-primary px-4 text-xs sm:text-sm font-semibold text-white transition hover:bg-secondary focus:outline-none focus:ring-4 focus:ring-[#44652d]/20" %>
+      <% end %>
+      <div class="mt-8 text-center text-xs sm:text-sm flex flex-col sm:flex-row justify-center gap-2">
+        <p>Remembered your password?</p>
+        <%= link_to "Login",new_session_path(resource_name), class: "font-semibold text-primary hover:text-secondary" %>
+      </div>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit "Send me password reset instructions" %>
-  </div>
-<% end %>
-<%= render "devise/shared/links" %>
+</section>
