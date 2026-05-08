@@ -10,14 +10,7 @@
         <div class="field mt-4">
           <%= f.label :email, class:"text-sm" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter your email", required: true,
-         data:{
-                  form_validation_target: "input",
-                  validation_type: "email",
-                  validation_required: "true",
-                  validation_label: "Email",
-                  validation_error_id: "email-error",
-                  action: "blur->form-validation#validateField input->form-validation#clearError"
-                }, 
+         data:{form_validation_target: "input",validation_type: "email",validation_required: "true",validation_label: "Email",validation_error_id: "email-error",action: "blur->form-validation#validateField input->form-validation#clearError"}, 
           class: "mt-2 w-full h-[35px] rounded-sm border border-slate-300 px-4 text-xs outline-none transition focus:border-primary"%>
           <span id="email-error" class="hidden text-red-500 text-xs mt-1 block"></span>
         </div>
@@ -29,24 +22,16 @@
           </div>
           <div>
             <%= f.password_field :password, autocomplete: "current-password", placeholder:"Enter your password",
-           data:{
-                  form_validation_target: "input",
-                  validation_type: "password",
-                  validation_required: "true",
-                  validation_label: "Password",
-                  validation_min_length: "6",
-                  validation_error_id: "password-error",
-                  action: "blur->form-validation#validateField input->form-validation#clearError"
-                },
+           data:{form_validation_target: "input",validation_type: "password",validation_required: "true",validation_label: "Password",validation_min_length: "6",validation_error_id: "password-error",action: "blur->form-validation#validateField input->form-validation#clearError"},
           class: "w-full mt-2 h-[35px] rounded-sm border border-slate-300 px-4 text-xs outline-none transition focus:border-primary"%>
             <span id="password-error" class="hidden text-red-500 text-xs mt-1 block"></span>
           </div>
         </div>
         <div class="flex gap-2 pt-3">
           <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
+          <%= f.label :remember_me , class: "text-sm" %>
         </div>
-        <div class="pt-4">
+        <div class="mt-4">
           <%= f.submit "Log in",
           class: "w-full h-[35px] rounded-sm bg-primary text-sm font-semibold text-white transition hover:bg-secondary focus:outline-none" %>
           <div class="flex flex-col items-center sm:flex-row justify-center gap-2 pt-3">
