@@ -45,14 +45,14 @@
             <%# Right Section %>
             <div class="flex items-center gap-4">
               <%# Profile Section %>
-              <div class="relative" data-controller="dropdown"  >
+              <div class="relative" data-controller="dropdown">
                 <%# Profile Button %>
                 <button type="button" data-action="click->dropdown#toggle"
                   class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 text-sm font-semibold text-white shadow-sm">
                   <%= current_user.email.first.upcase %>
                 </button>
                 <%# Dropdown Menu %>
-                <div data-dropdown-target="menu" class="hidden absolute right-0 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg">
+                <div data-dropdown-target="menu" class="w-fit hidden absolute top-10 z-50 right-0 mt-2 w-48 rounded-lg border border-slate-200 bg-white shadow-lg">
                   <div class="border-b border-slate-100 px-4 py-3">
                     <p class="text-sm font-medium text-slate-800"><%= current_user.email %></p>
                   </div>
