@@ -5,7 +5,7 @@
       <h1 class="font-semibold mt-4 text-xl">Welcome back</h1>
       <p class="mt-3 text-sm sm:text-md leading-7">Sign in to continue managing leave requests, balances, and approvals.</p>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), 
-       data: { controller: "form-validation", action: "submit->form-validation#validate" }) do |f| %>
+       data: { controller: "form-validation", action: "submit->form-validation#validateForm" }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
         <div class="field mt-4">
           <%= f.label :email, class:"text-sm" %>
@@ -22,7 +22,7 @@
           </div>
           <div>
             <%= f.password_field :password, autocomplete: "current-password", placeholder:"Enter your password",
-           data:{form_validation_target: "input",validation_type: "password",validation_required: "true",validation_label: "Password",validation_min_length: "6",validation_error_id: "password-error",action: "blur->form-validation#validateField input->form-validation#clearError"},
+           data:{form_validation_target: "input",validation_type: "password",validation_required: "true",validation_label: "Password",validation_min_length: "6",validation_error_id: "password-error",action: "blur->form-validation#validateField input->form-validation#handleInput"},
           class: "w-full mt-2 h-[35px] rounded-sm border border-slate-300 px-4 text-xs outline-none transition focus:border-primary"%>
             <span id="password-error" class="hidden text-red-500 text-xs mt-1 block"></span>
           </div>
