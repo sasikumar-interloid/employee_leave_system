@@ -1,0 +1,40 @@
+<section class="h-full flex items-center justify-center ">
+  <div class="w-fit bg-white rounded-md shadow-[0_5px_80px_rgba(15,23,42,0.09)] border border-slate-50">
+    <div class="w-full p-6 md:p-8">
+      <h1 class="text-lg font-semibold tracking-tight">Create a new password</h1>
+      <p class="mt-4 text-sm leading-7">Choose a strong password to restore access to your leave portal account.</p>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name),
+       data: { controller: "form-validation", action: "submit->form-validation#validateForm" }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= f.hidden_field :reset_password_token %>
+        <%# New password %>
+        <div>
+          <%= f.label :password, "New password", class: "text-sm font-medium" %>
+          <div class="mt-3 flex h-[35px] items-center rounded-md border border-slate-300 transition focus-within:border-primary">
+            <%= f.password_field :password,autofocus: true,autocomplete: "new-password",placeholder: "Create a new password",required: true,
+             data:{form_validation_target: "input",validation_type: "password",validation_required: "true",validation_label: "Password",validation_min_length: "6",validation_error_id: "password-error",action: "blur->form-validation#validateField input->form-validation#handleInput"},
+            class: "h-full min-w-0 flex-1 border-0 bg-transparent px-4 text-sm outline-none focus:ring-0" %>
+          </div>
+          <span id="password-error" class="hidden text-red-500 text-xs mt-2 "></span>
+        </div>
+        <%# Confirm password %>
+        <div class="mt-3">
+          <%= f.label :password_confirmation, "Confirm new password", class: "text-sm font-medium text-slate-900" %>
+          <div class="mt-2 flex h-[35px] items-center rounded-md border border-slate-300 transition focus-within:border-primary">
+            <%= f.password_field :password_confirmation,autocomplete: "new-password",placeholder: "Repeat the new password",required: true,
+             data:{form_validation_target: "input",validation_required: "true",validation_match: "#user_password",validation_label: "Password confirmation",validation_error_id: "confirm-password-error",action: "blur->form-validation#validateField input->form-validation#handleInput"},
+              class: "h-full min-w-0 flex-1 border-0 bg-transparent px-4 text-sm outline-none focus:ring-0" %>
+          </div>
+          <span id="confirm-password-error" class="hidden text-red-500 text-xs mt-1 block"></span>
+        </div>
+        <%= f.submit "Change my password",
+          class: "mt-4 inline-flex w-full h-[35px] items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-white transition hover:bg-secondary focus:outline-none focus:ring-4 focus:ring-[#44652d]/20" %>
+      <% end %>
+      <%# Login link %>
+      <div class="mt-6 text-center text-slate-600 flex justify-center gap-2 ">
+        <p class="text-sm">Remembered your password?</p>
+        <%= link_to "Login", new_session_path(resource_name), class: "font-semibold text-primary text-sm hover:text-secondary" %>
+      </div>
+    </div>
+  </div>
+</section>
