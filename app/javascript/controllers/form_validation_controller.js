@@ -61,9 +61,20 @@ export default class extends Controller {
       return this.showError(input, `${label} must be at least ${minLength} characters.`)
     }
  
-    if (input.dataset.validationSpecialCharacter === "true" && !/[!@#$%^&*(),.?":{}|<>]/.test(value)) {
-      return this.showError(input, `${label} must include at least one special character.`)
+   if (input.dataset.validationType === "password" && !input.dataset.validationMatch ) {
+
+  if (!/[A-Z]/.test(value)) {
+    return this.showError(input, `${label} must contain at least one uppercase letter.`)
     }
+
+  if (!/[a-z]/.test(value)) {
+    return this.showError(input, `${label} must contain at least one lowercase letter.`)
+    }
+
+  if (!/[!@#$%^&*(),.?":{}|<>]/.test(value)) {
+    return this.showError(input, `${label} must contain at least one special character.`)
+    }
+  }
  
     if (input.dataset.validationMatch) {
       const matchInput = this.element.querySelector(input.dataset.validationMatch)

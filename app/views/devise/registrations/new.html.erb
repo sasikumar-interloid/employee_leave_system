@@ -20,8 +20,8 @@
             <%= f.label :password, class: "text-sm font-medium" %>
           </div>
           <div class="mt-4 flex h-[35px] items-center rounded-md border border-slate-200 transition focus-within:border-primary">
-            <%= f.password_field :password,autocomplete: "new-password",placeholder: "Create a password",required: true,
-            data:{form_validation_target: "input",validation_type: "password",validation_required: "true", validation_min_length: "6", validation_match: "#user_password",validation_special_character: "true",validation_label: "Password",validation_error_id: "password-error",action: "blur->form-validation#validateField input->form-validation#clearError"},
+            <%= f.password_field :password,autocomplete: "new-password",placeholder: "Create a password",required: true,    
+            data:{form_validation_target: "input",validation_type: "password",validation_required: "true",validation_label: "Password", validation_min_length: "6", validation_error_id: "password-error",action: "blur->form-validation#validateField input->form-validation#handleInput"},
             class: "h-full min-w-0 flex-1 border-0 bg-transparent px-4 text-xs outline-none focus:ring-0" %>
           </div>
           <span id="password-error" class="hidden text-red-500 text-xs mt-2 "></span>
@@ -31,7 +31,7 @@
           <%= f.label :password_confirmation, "Confirm password", class: "text-sm font-medium text-slate-900" %>
           <div class="mt-2 flex h-[35px] items-center rounded-md border border-slate-200 transition focus-within:border-primary">
             <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: "Confirm your password",required: true,
-            data:{form_validation_target: "input",validation_type: "password",validation_required: "true",validation_label: "confirm-Password", validation_min_length: "6", validation_error_id: "confirm-password-error",action: "blur->form-validation#validateField input->form-validation#handleInput"},
+            data:{form_validation_target: "input",validation_type: "password",validation_required: "true", validation_match: "#user_password", validation_label: "confirm password",validation_error_id: "confirm-password-error",action: "blur->form-validation#validateField input->form-validation#clearError"},
             class: "h-full min-w-0 flex-1 border-0 bg-transparent px-4 text-xs outline-none focus:ring-0" %>
           </div>
           <span id="confirm-password-error" class="hidden text-red-500 text-xs mt-1 block"></span>
