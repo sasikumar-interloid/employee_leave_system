@@ -1,0 +1,2 @@
+class RoleLeaveType < ApplicationRecord
+end

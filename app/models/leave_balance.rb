@@ -1,0 +1,2 @@
+class LeaveBalance < ApplicationRecord
+end
