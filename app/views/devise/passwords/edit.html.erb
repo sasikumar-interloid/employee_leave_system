@@ -21,7 +21,7 @@
         <%= f.label :password_confirmation, "Confirm new password", class: "text-sm font-medium text-slate-900" %>
         <div class="mt-2 flex h-[35px] items-center rounded-md border border-slate-300 transition focus-within:border-primary">
           <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Repeat the new password", required: true,
-             data:{form_validation_target: "input",validation_type: "password",validation_required: "true",validation_match: "#user_password",validation_special_character: "true",validation_label: "Password confirmation",validation_error_id: "confirm-password-error",action: "blur->form-validation#validateField input->form-validation#clearError"},
+             data:{form_validation_target: "input",validation_type: "password",validation_required: "true",validation_match: "#user_password",validation_special_character: "true",validation_label: "Password confirmation",validation_error_id: "confirm-password-error",action: "blur->form-validation#validateField input->form-validation#handleInput"},
              class: "h-full min-w-0 flex-1 border-0 bg-transparent px-4 text-sm outline-none focus:ring-0" %>
         </div>
         <span id="confirm-password-error" class="hidden text-red-500 text-xs mt-1 block"></span>
