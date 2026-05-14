@@ -10,7 +10,7 @@
         <div class="mt-3">
           <%= f.label :email, "Email address", class: "text-sm font-medium" %>
           <%= f.email_field :email,autofocus: true, autocomplete: "email", required: true,
-          data:{form_validation_target: "input",validation_type: "email",validation_required: "true",validation_label: "Email",validation_error_id: "email-error",action: "blur->form-validation#validateField input->form-validation#clearError"},
+          data:{form_validation_target: "input",validation_type: "email",validation_required: "true",validation_label: "Email",validation_error_id: "email-error",action: "blur->form-validation#validateField input->form-validation#handleInput"},
           placeholder: "Enter your email",class: "mt-2 w-full h-[35px] rounded-sm border border-slate-200 px-4 text-sm outline-none transition focus:border-primary" %>
           <span id="email-error" class="hidden text-red-500 text-xs mt-1 block"></span>
         </div>
