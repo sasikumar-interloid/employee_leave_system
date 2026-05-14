@@ -8,19 +8,19 @@ static targets = ["sidebar", "label"]
     this.collapsed = false
   }
 
-  toggle() {
+  toggle(event) {
     this.collapsed = !this.collapsed
 
     if (this.collapsed) {
-      this.sidebarTarget.classList.remove("w-[264px]")
-      this.sidebarTarget.classList.add("w-[80px]")
+      this.sidebarTarget.classList.remove("w-64")
+      this.sidebarTarget.classList.add("w-20")
 
       this.labelTargets.forEach((label) => {
         label.classList.add("hidden")
       })
     } else {
-      this.sidebarTarget.classList.remove("w-[80px]")
-      this.sidebarTarget.classList.add("w-[264px]")
+      this.sidebarTarget.classList.remove("w-20")
+      this.sidebarTarget.classList.add("w-64")
 
       this.labelTargets.forEach((label) => {
         label.classList.remove("hidden")

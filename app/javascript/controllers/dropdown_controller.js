@@ -4,6 +4,8 @@ export default class extends Controller {
   static targets = ["menu"]
 
   connect() {
+    alert("connected")
+    console.log("dropdown connected")
     this.boundClose = this.closeOutside.bind(this)
     document.addEventListener("click", this.boundClose)
   }
@@ -14,6 +16,7 @@ export default class extends Controller {
 
   toggle(event) {
     event.stopPropagation()
+    event.preventDefault()
     this.menuTarget.classList.toggle("hidden")
   }
 
