@@ -4,7 +4,6 @@ export default class extends Controller {
   static targets = ["menu"]
 
   connect() {
-    alert("connected")
     console.log("dropdown connected")
     this.boundClose = this.closeOutside.bind(this)
     document.addEventListener("click", this.boundClose)

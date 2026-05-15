@@ -20,8 +20,8 @@
   </head>
   <body>
     <%= render "devise/shared/flash" %>
-    <main  data-controller="sidebar" class="flex flex-col">
-      <% if user_signed_in? %>
+    <% if user_signed_in? %>
+      <div  data-controller="sidebar" class="flex flex-col h-screen">
         <header class="sticky top-0 z-20 w-full border-b border-slate-200 bg-white/90 backdrop-blur">
           <nav class="flex items-center justify-between py-4 px-8">
             <%# Left Section %>
@@ -129,11 +129,11 @@
             </nav>
           </aside>
         </div>
-      <% else %>
-        <section class="flex-1 p-6">
-          <%= yield %>
-        </section>
-      <% end %>
-    </main>
+      </div>
+    <% else %>
+      <main class="h-full">
+        <%= yield %>
+      </main>
+    <% end %>
   </body>
 </html>
